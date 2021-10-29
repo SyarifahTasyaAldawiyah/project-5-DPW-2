@@ -5,19 +5,19 @@
 
    
    <div class="container">
-   	<div class="card mt-3 pt-3">
-   		<div class="card-body">
-				<div class="container-fluid">
-   					<div class="row ml-1 mr-2 mb-3">
-   						<h4>Tambah Data User</h4>
-   					</div>
+      <div class="card mt-3 pt-3">
+         <div class="card-body">
+            <div class="container-fluid">
+                  <div class="row ml-1 mr-2 mb-3">
+                     <h4>Tambah Data User</h4>
+                  </div>
 
-   	<div class="container">
-   		<div class="card-body">
-   			<form action="{{url('admin/user/update', $user->id)}}" method="post">
-   				@csrf
+      <div class="container">
+         <div class="card-body">
+            <form action="{{url('admin/user/update', $user->id)}}" method="post">
+               @csrf
                 @method("PUT")
-   			<div class="form-group">
+            <div class="form-group">
                <label class="control-label">Nama</label>
                <input type="text" class="form-control" name="nama" value="{{$user->nama}}">
             </div>

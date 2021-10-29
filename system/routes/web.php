@@ -29,21 +29,32 @@ Route::get('template', function () {
 
 Route::get('test/{produk}/{hargaMin?}/{hargaMax?}', [HomeController::class, 'test']);
 
-
-
+Route::get('login', [AuthController::class, 'showlogin'] );
 
 Route::get('admin/beranda', [HomeController::class, 'showberanda']);
 Route::get('admin/kategori', [HomeController::class, 'showkategori']);
-Route::get('admin/user', [HomeController::class, 'showuser']);
+
+Route::get('admin/produk', [ProdukController::class, 'index']);
+Route::get('admin/produk/create', [ProdukController::class, 'create']);
+Route::post('admin/produk', [ProdukController::class, 'store']);
+Route::get('admin/produk/{produk}', [ProdukController::class, 'show']);
+Route::get('admin/produk/{produk}/edit', [ProdukController::class, 'edit']);
+Route::put('admin/produk/update/{produk}', [ProdukController::class, 'update']);
+Route::delete('admin/produk/{produk}', [ProdukController::class, 'destroy']);
 
 
-Route::prefix('admin')->middleware('auth')->group(function(){
-	Route::resource('produk', ProdukController::class);
-	Route::resource('user', UserController::class);
-});
+Route::get('admin/user', [UserController::class, 'index']);
+Route::get('admin/user/create', [UserController::class, 'create']);
+Route::post('admin/user', [UserController::class, 'store']);
+Route::get('admin/user/{user}', [UserController::class, 'show']);
+Route::get('admin/user/{user}/edit', [UserController::class, 'edit']);
+Route::put('admin/user/update/{user}', [UserController::class, 'update']);
+Route::delete('admin/user/{user}', [UserController::class, 'destroy']);
+
 
 Route::get('login', [AuthController::class, 'showlogin'] );
 Route::post('login', [AuthController::class, 'loginProcess'] );
+Route::post('logout', [AuthController::class, 'logout'] );
 
 
 
